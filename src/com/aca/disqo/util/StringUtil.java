@@ -36,15 +36,4 @@ public class StringUtil {
         Arrays.setAll(result, i -> (int) charArray[i]);
         return result;
     }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String A = sc.next();
-        String B = sc.next();
-        //isOrderRight(A, B);
-        isAnagrams(A, B);
-        System.out.println(isAnagrams(A, B));
-
-
-    }
 }

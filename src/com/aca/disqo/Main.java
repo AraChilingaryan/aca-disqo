@@ -1,6 +1,5 @@
 package com.aca.disqo;
 
-import com.aca.disqo.util.SortingUtil;
 import com.aca.disqo.util.StringUtil;
 
 import java.util.Arrays;
@@ -37,6 +36,6 @@ public class Main {
         String[] string = getString();
         String firstString = string[0];
         String secondString = string[1];
-          System.out.println(StringUtil.isAnagrams(firstString, secondString) ? "Anagrams": "Not anagrams");
+        System.out.println(StringUtil.isAnagrams(firstString, secondString) ? "Anagrams" : "Not anagrams");
     }
 }
