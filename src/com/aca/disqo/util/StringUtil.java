@@ -1,10 +1,12 @@
-package com.aca.disqo.stringusage;
+package com.aca.disqo.util;
 
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-import java.util.stream.IntStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
-public class LexicographicallyOrder {
+public class StringUtil {
+
     public static void isOrderRight(String a, String b) {
         System.out.println(a.length() + b.length());
         String areStringInRightOrder = a.compareTo(b) > 0 ? "Yes" : "No";
@@ -14,21 +16,25 @@ public class LexicographicallyOrder {
     }
 
     public static boolean isAnagrams(String a, String b) {
-        Map<Character, Integer> map = new HashMap<>();
-        String sum = a.toLowerCase() + b.toLowerCase();
         if (a.length() == b.length()) {
-            for (char c : sum.toCharArray()) {
-                if (map.containsKey(c)) {
-                    map.put(c, map.get(c) + 1);
-                } else {
-                    map.put(c, 1);
-                }
-            }
-        } else {
+            char[] charArrA = a.toCharArray();
+            int[] intArrayA = asIntArray(charArrA);
+            SortingUtil.insertionSort(intArrayA);
+
+            char[] charArrB = b.toCharArray();
+            int[] intArrayB = asIntArray(charArrB);
+            SortingUtil.quickSort(intArrayB);
+            return Arrays.equals(intArrayA, intArrayB);
+        }
+        else {
             return false;
         }
-        map.forEach((key, value) -> System.out.println(key + ":" + value));
-        return map.keySet().stream().noneMatch(character -> map.get(character) % 2 == 1);
+    }
+
+    private static int[] asIntArray(char[] charArray) {
+        int[] result = new int[charArray.length];
+        Arrays.setAll(result, i -> (int) charArray[i]);
+        return result;
     }
 
     public static void main(String[] args) {
