@@ -3,6 +3,7 @@ package com.aca.disqo;
 import com.aca.disqo.util.SortingUtil;
 import com.aca.disqo.util.StringUtil;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -29,16 +30,13 @@ public class Main {
     }
 
     public static void printArray(int[] arr) {
-        System.out.println("Array : ");
-        for (int j : arr) {
-            System.out.print(j + " ");
-        }
+        System.out.println(Arrays.toString(arr));
     }
 
     public static void main(String[] args) {
         String[] string = getString();
         String firstString = string[0];
         String secondString = string[1];
-        System.out.println(StringUtil.isAnagrams(firstString, secondString) ? "Anagrams": "Not anagrams");
+          System.out.println(StringUtil.isAnagrams(firstString, secondString) ? "Anagrams": "Not anagrams");
     }
 }
