@@ -9,7 +9,7 @@ public class Main {
         Engine engine = new Engine(178,2000, 220);
         Car car = new Car(2012,"w212","Mercedes", engine);
         System.out.println(car.getEngine().getWeight());
-        engine.setWeight(586);
+        car.getEngine().setWeight(586);
         System.out.println(car.getEngine().getWeight());
 
     }
