@@ -38,4 +38,12 @@ public class Engine {
     public int getMileage() {
         return mileage;
     }
+
+    public Engine copy(final Engine engine){
+        final Engine cloneEngine = new Engine();
+        cloneEngine.setWeight(engine.getWeight());
+        cloneEngine.setMileage(engine.getMileage());
+        cloneEngine.setHorsePower(engine.getHorsePower());
+        return cloneEngine;
+    }
 }
