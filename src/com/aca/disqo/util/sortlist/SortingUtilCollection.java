@@ -2,7 +2,11 @@ package com.aca.disqo.util.sortlist;
 
 import java.util.List;
 
-public class SortingUtilCollection<T> {
+public final class SortingUtilCollection {
+
+    private SortingUtilCollection(){
+
+    }
 
     public static <T extends Comparable<T>> void insertionSort(List<T> genericList) {
         int n = genericList.size();
