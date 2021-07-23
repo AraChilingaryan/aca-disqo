@@ -17,5 +17,6 @@ public class Main {
         System.out.println(people);
         SortingUtilCollection.quickSort(people);
         System.out.println(people);
+
     }
 }
