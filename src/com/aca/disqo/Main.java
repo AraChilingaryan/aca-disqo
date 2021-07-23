@@ -1,16 +1,21 @@
 package com.aca.disqo;
 
-import com.aca.disqo.immutableclass.Car;
-import com.aca.disqo.immutableclass.Engine;
+import com.aca.disqo.util.sortlist.Person;
+import com.aca.disqo.util.sortlist.SortingUtilCollection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
 
-        Engine engine = new Engine(178,2000, 220);
-        Car car = new Car(2012,"w212","Mercedes", engine);
-        System.out.println(car.getEngine().getWeight());
-        car.getEngine().setWeight(586);
-        System.out.println(car.getEngine().getWeight());
-
+        List<Person> people = new ArrayList<>();
+        Person person = new Person("kasyan",11);
+        Person person1 = new Person("armen", 11);
+        people.add(person);
+        people.add(person1);
+        System.out.println(people);
+        SortingUtilCollection.quickSort(people);
+        System.out.println(people);
     }
 }
