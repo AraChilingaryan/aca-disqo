@@ -1,22 +1,13 @@
 package com.aca.disqo;
 
-import com.aca.disqo.util.sortlist.Person;
-import com.aca.disqo.util.sortlist.SortingUtilCollection;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.aca.disqo.calculateexpression.Expression;
+import com.aca.disqo.calculateexpression.OperatorExpression;
 
 public class Main {
     public static void main(String[] args) {
 
-        List<Person> people = new ArrayList<>();
-        Person person = new Person("kasyan",11);
-        Person person1 = new Person("armen", 11);
-        people.add(person);
-        people.add(person1);
-        System.out.println(people);
-        SortingUtilCollection.quickSort(people);
-        System.out.println(people);
+        Expression expression = new OperatorExpression();
+        System.out.println(expression.calculate("6+5+7+8+5"));
 
     }
 }
