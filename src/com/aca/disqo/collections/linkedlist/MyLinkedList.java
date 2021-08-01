@@ -1,6 +1,8 @@
-package com.aca.disqo.collections;
+package com.aca.disqo.collections.linkedlist;
 
-public class MyLinkedList<T> implements MyList<T>{
+import java.util.Iterator;
+
+public class MyLinkedList<T> implements Iterable<MyNode>{
     MyNode<T> first;
     MyNode<T> last;
 
@@ -10,7 +12,6 @@ public class MyLinkedList<T> implements MyList<T>{
     }
 
 
-    @Override
     public T get(int index) {
         MyNode<T> currentNode;
         if (index < size / 2) {
@@ -28,7 +29,6 @@ public class MyLinkedList<T> implements MyList<T>{
     }
 
 
-    @Override
     public void add(T obj) {
         linkLast(obj);
     }
@@ -66,8 +66,6 @@ public class MyLinkedList<T> implements MyList<T>{
         size--;
     }
 
-
-    @Override
     public void remove(int index) {
         if (index == 0) {
             unlinkFirst();
@@ -97,8 +95,6 @@ public class MyLinkedList<T> implements MyList<T>{
 
     }
 
-
-    @Override
     public boolean remove(Object obj) {
         if(obj != null) {
             if (first.value.equals(obj)) {
@@ -143,12 +139,10 @@ public class MyLinkedList<T> implements MyList<T>{
         return false;
     }
 
-    @Override
     public int size() {
         return size;
     }
 
-    @Override
     public boolean contains(Object obj) {
         MyNode<T> currentNode = first;
         for (int i = 0; i < size; i++) {
@@ -174,17 +168,9 @@ public class MyLinkedList<T> implements MyList<T>{
         return stringBuilder.append("]").toString();
     }
 
-    private class MyNode<T>{
-        T value;
-        MyNode<T> next;
-        MyNode<T> prev;
-
-        public MyNode(MyNode<T> prev, T value, MyNode<T> next) {
-            this.prev = prev;
-            this.value = value;
-            this.next = next;
-        }
+    @Override
+    public Iterator<MyNode> iterator() {
+        return new MyListIterator(first);
     }
-
 
 }

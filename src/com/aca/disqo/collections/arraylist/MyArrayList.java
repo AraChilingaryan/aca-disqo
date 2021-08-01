@@ -1,6 +1,9 @@
-package com.aca.disqo.collections;
+package com.aca.disqo.collections.arraylist;
 
-public class MyArrayList<T> implements MyList<T> {
+import java.util.Iterator;
+import java.util.ListIterator;
+
+public class MyArrayList<T> implements Iterable<T> {
     private Object[] data;
     private static final int FACTOR = 5;
     private int capacity;
@@ -11,14 +14,14 @@ public class MyArrayList<T> implements MyList<T> {
         data = new Object[capacity];
     }
 
-    @Override
+
     @SuppressWarnings("unchecked")
     public T get(int index) {
         checkIndex(index);
         return (T) data[index];
     }
 
-    @Override
+
     public void add(T obj) {
         if (cursor == capacity - 1) {
             growArray();
@@ -35,7 +38,7 @@ public class MyArrayList<T> implements MyList<T> {
 
     }
 
-    @Override
+
     public void remove(int index) {
         checkIndex(index);
         for (int i = index; i < cursor - 1; i++) {
@@ -44,7 +47,7 @@ public class MyArrayList<T> implements MyList<T> {
         cursor--;
     }
 
-    @Override
+
     public boolean remove(T obj) {
         int index = indexOf(obj);
         if (index != -1) {
@@ -54,12 +57,11 @@ public class MyArrayList<T> implements MyList<T> {
         return false;
     }
 
-    @Override
     public int size() {
         return cursor;
     }
 
-    @Override
+
     public boolean contains(T obj) {
         return indexOf(obj) != -1;
     }
@@ -87,7 +89,7 @@ public class MyArrayList<T> implements MyList<T> {
         }
     }
 
-    @Override
+
     public String toString() {
         StringBuilder result = new StringBuilder("[");
         for (int i = 0; i < cursor; i++) {
@@ -100,4 +102,8 @@ public class MyArrayList<T> implements MyList<T> {
         return result.toString();
     }
 
+    @Override
+    public Iterator<T> iterator() {
+        return new MyArrayListIterator<>(this);
+    }
 }
