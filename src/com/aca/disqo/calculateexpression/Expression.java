@@ -1,10 +1,6 @@
 package com.aca.disqo.calculateexpression;
 
-public abstract class Expression {
+public interface Expression {
 
-     String expression;
-     int value;
-
-     public abstract int calculate(String expression);
-
+    int calculate(String expression);
 }

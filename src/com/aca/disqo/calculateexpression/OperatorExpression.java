@@ -1,32 +1,26 @@
 package com.aca.disqo.calculateexpression;
 
-import java.util.Stack;
-import java.util.stream.Collectors;
-
-public class OperatorExpression extends Expression {
+public class OperatorExpression implements Expression {
 
     private Expression left;
     private Expression right;
-    private static Stack<Expression> expressionStack = new Stack<>();
+    private Operator operator;
 
     public OperatorExpression() {
     }
 
-
-
-    @Override
     public int calculate(String expression) {
-
-        String forLeft = String.valueOf(expression.toCharArray()[0]);
-        String forRight = expression.substring(2);
-        left = new ValueExpression(forLeft);
-        expressionStack.push(left);
-        if (forRight.length() == 1){
-            right = new ValueExpression(forRight);
-            expressionStack.push(right);
-            return expressionStack.stream().mapToInt(value1 -> value1.value).sum();
+        if (!expression.contains("+") && !expression.contains("-")) {
+            right = new ValueExpression();
+            return right.calculate(expression);
         }
-        right = new OperatorExpression();
-        return calculate(forRight);
+        String[] expressions = Parser.parse(expression);
+        String rightStr = expressions[1];
+        String leftStr = expressions[0];
+        this.left = new ValueExpression();
+        this.right = new OperatorExpression();
+        operator = new Operator(Parser.findOperator(expression));
+        return operator.detectOperator(left, right, leftStr, rightStr);
     }
+
 }
