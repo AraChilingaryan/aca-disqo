@@ -10,10 +10,13 @@ public class OperatorExpression implements Expression {
     }
 
     public int calculate(String expression) {
-        if (!expression.contains("+") && !expression.contains("-")) {
-            right = new ValueExpression();
-            return right.calculate(expression);
-        }
+            if ((!expression.contains("+") && (expression.contains("-") && expression.indexOf('-') == 0)
+                    || expression.length() == 1)) {
+                if (Parser.isOperatorCountOne(expression)) {
+                    right = new ValueExpression();
+                    return right.calculate(expression);
+                }
+            }
         String[] expressions = Parser.parse(expression);
         String rightStr = expressions[1];
         String leftStr = expressions[0];

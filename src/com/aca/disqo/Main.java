@@ -7,6 +7,6 @@ public class Main {
 
     public static void main(String[] args) {
         Expression expression = new OperatorExpression();
-        System.out.println(expression.calculate("5-7"));
+        System.out.println(expression.calculate("25-1+25"));
     }
 }
